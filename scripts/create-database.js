@@ -6,7 +6,7 @@ const envName = process.argv.slice(2)[0];
 const loadEnv = (envName) => {
   const { NODE_ENV } = process.env;
   if (NODE_ENV != "production") {
-    const envFile = envName === "test" ? "../tests/.env.test" : "../.env";
+    const envFile = envName === "test" ? "../.env.test" : "../.env";
 
     console.log(envFile)
 
@@ -23,7 +23,7 @@ const createDatabase = async (databaseName) => {
   const client = new Client({
     host: process.env.PGHOST,
     port: process.env.PGPORT,
-    user: "postgres",
+    user: process.env.PGUSER,
     password: process.env.PGPASSWORD,
   });
 
